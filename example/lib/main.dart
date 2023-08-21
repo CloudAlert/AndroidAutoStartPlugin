@@ -29,6 +29,8 @@ class MyAppState extends State<MyApp> {
     AndroidAutostart.navigateAutoStartSetting();
   }
 
+
+
   void _openXiaomiDevicesAutoStartManagementScreen() {
     AndroidAutostart.customSetComponent(
       manufacturer: "xiaomi",

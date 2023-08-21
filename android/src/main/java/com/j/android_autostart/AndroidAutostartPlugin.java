@@ -4,20 +4,21 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.provider.Settings;
 
 import androidx.annotation.NonNull;
 
-import io.flutter.embedding.android.FlutterActivity;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.PluginRegistry.Registrar;
-
-import java.util.*;
 
 /** AndroidAutostartPlugin */
 public class AndroidAutostartPlugin implements FlutterPlugin, MethodCallHandler {
@@ -31,7 +32,7 @@ public class AndroidAutostartPlugin implements FlutterPlugin, MethodCallHandler 
   private static HashMap<String, List<String>> intents = new HashMap<String, List<String>>() {
     {
       put("Xiaomi", Arrays.asList(
-              "com.miui.securitycenter/com.miui.permcenter.autostart.AutoStartManagementActivity",//MIUI10_9.8.1(9.0)
+              "com.miui.securitycenter/com.miui.permcenter.autostart.AutoStartManagementActivity",
               "com.miui.securitycenter"
       ));
 
@@ -55,25 +56,25 @@ public class AndroidAutostartPlugin implements FlutterPlugin, MethodCallHandler 
 
 
       put("HUAWEI", Arrays.asList(
-              "com.huawei.systemmanager/.startupmgr.ui.StartupNormalAppListActivity",//EMUI9.1.0(方舟,9.0)
+              "com.huawei.systemmanager/.startupmgr.ui.StartupNormalAppListActivity",
               "com.huawei.systemmanager/.appcontrol.activity.StartupAppControlActivity",
               "com.huawei.systemmanager/.optimize.process.ProtectActivity",
               "com.huawei.systemmanager/.optimize.bootstart.BootStartActivity",
-              "com.huawei.systemmanager"//最后一行可以写包名, 这样如果签名的类路径在某些新版本的ROM中没找到 就直接跳转到对应的安全中心/手机管家 首页.
+              "com.huawei.systemmanager"
       ));
 
       put("vivo", Arrays.asList(
               "com.iqoo.secure/.ui.phoneoptimize.BgStartUpManager",
               "com.iqoo.secure/.safeguard.PurviewTabActivity",
               "com.vivo.permissionmanager/.activity.BgStartUpManagerActivity",
-//                    "com.iqoo.secure/.ui.phoneoptimize.AddWhiteListActivity", //这是白名单, 不是自启动
+//                    "com.iqoo.secure/.ui.phoneoptimize.AddWhiteListActivity",
               "com.iqoo.secure",
               "com.vivo.permissionmanager"
       ));
 
       put("Meizu", Arrays.asList(
               "com.meizu.safe/.permission.SmartBGActivity",//Flyme7.3.0(7.1.2)
-              "com.meizu.safe/.permission.PermissionMainActivity",//网上的
+              "com.meizu.safe/.permission.PermissionMainActivity",
               "com.meizu.safe"
       ));
 
@@ -94,20 +95,20 @@ public class AndroidAutostartPlugin implements FlutterPlugin, MethodCallHandler 
       ));
       put("letv", Arrays.asList(
               "com.letv.android.letvsafe/.AutobootManageActivity",
-              "com.letv.android.letvsafe/.BackgroundAppManageActivity",//应用保护
+              "com.letv.android.letvsafe/.BackgroundAppManageActivity",
               "com.letv.android.letvsafe"
       ));
       put("zte", Arrays.asList(
               "com.zte.heartyservice/.autorun.AppAutoRunManager",
               "com.zte.heartyservice"
       ));
-      //金立
+
       put("F", Arrays.asList(
               "com.gionee.softmanager/.MainActivity",
               "com.gionee.softmanager"
       ));
 
-      //以下为未确定(厂商名也不确定)
+
       put("smartisanos", Arrays.asList(
               "com.smartisanos.security/.invokeHistory.InvokeHistoryActivity",
               "com.smartisanos.security"
@@ -122,22 +123,22 @@ public class AndroidAutostartPlugin implements FlutterPlugin, MethodCallHandler 
               "com.yulong.android.coolsafe/.ui.activity.autorun.AutoRunListActivity",
               "com.yulong.android.coolsafe"
       ));
-      //酷派
-      put("coolpad"/*厂商名称不确定是否正确*/, Arrays.asList(
+
+      put("coolpad", Arrays.asList(
               "com.yulong.android.security/com.yulong.android.seccenter.tabbarmain",
               "com.yulong.android.security"
       ));
-      //联想
-      put("lenovo"/*厂商名称不确定是否正确*/, Arrays.asList(
+
+      put("lenovo", Arrays.asList(
               "com.lenovo.security/.purebackground.PureBackgroundActivity",
               "com.lenovo.security"
       ));
-      put("htc"/*厂商名称不确定是否正确*/, Arrays.asList(
+      put("htc", Arrays.asList(
               "com.htc.pitroad/.landingpage.activity.LandingPageActivity",
               "com.htc.pitroad"
       ));
       //华硕
-      put("asus"/*厂商名称不确定是否正确*/, Arrays.asList(
+      put("asus", Arrays.asList(
               "com.asus.mobilemanager/.MainActivity",
               "com.asus.mobilemanager"
       ));

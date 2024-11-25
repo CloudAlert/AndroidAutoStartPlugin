@@ -13,7 +13,7 @@ dependencies:
   plugin_platform_interface: ^2.1.4
   autostarter: # ^0.0.2
     git:
-      url: https://github.com/CloudAlert/autostarter.git
+      url: https://github.com/Steffaanus/autostarter.git
 
 dev_dependencies:
   flutter_lints: ^2.0.1
